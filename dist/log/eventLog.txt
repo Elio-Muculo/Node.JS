@@ -1,0 +1,3 @@
+05-42-2022	20:42:37 	 4456ba81-377d-40b0-836b-58cad995e6bf 	 Log event emitted 
+05-44-2022	20:44:12 	 48798579-aaf7-4c7d-a79a-128c91111d15 	 Log event emitted 
+05-44-2022	20:44:17 	 934f85b4-83eb-42ee-9c24-bba9030d2397 	 Log event emitted 

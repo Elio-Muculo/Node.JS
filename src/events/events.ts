@@ -1,0 +1,33 @@
+import { format } from 'date-fns';
+const { v4: uuid }  = require('uuid');
+
+import path from 'path';
+import fs from 'fs';
+import fsPromises from 'fs/promises';
+
+
+
+
+const logEvents = async (message: string) => {
+    const datetime: string = `${format(new Date(), 'dd-mm-yyyy\tHH:mm:ss')}`;
+    const logItem: string = `${datetime} \t ${uuid()} \t ${message} \n`;
+
+    console.log(logItem);
+    console.log(__filename);
+    
+    
+    try {
+        if (!fs.existsSync(path.join(__dirname, '/log'))) {
+            // TODO why is only creating folder on dist and not on my src Typescript project?
+            fsPromises.mkdir(path.join(__dirname, '/log'));
+        }
+
+        await fsPromises.appendFile(path.join(__dirname, '/log', 'eventLog.txt'), logItem);
+    } catch (error) {
+        console.error(error);
+        
+    }
+}
+
+
+module.exports.log = logEvents;
