@@ -1,5 +1,4 @@
-require('./log')
-
+require('./server/server')
 
 
 
