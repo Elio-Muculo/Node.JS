@@ -1,10 +1,1 @@
-07-51-2022	22:51:07 	 3285e74e-2f80-4e30-8bf7-5081ee3fa138 	 Log event emitted 
-07-53-2022	22:53:46 	 c76dc67f-3761-43d2-b8cd-e05eac458e84 	 Log event emitted 
-07-56-2022	22:56:52 	 67f50b7a-9d37-4bb9-b31d-246638d11bf3 	 Log event emitted 
-07-02-2022	23:02:17 	 128eee4f-d6e5-4816-851d-7b2efe9a9a21 	 Log event emitted 
-07-02-2022	23:02:28 	 8f1d5ae9-2f91-471a-a786-30fbc5be12f9 	 Log event emitted 
-07-02-2022	23:02:33 	 2a397398-a191-4087-9d81-27175abc0352 	 Log event emitted 
-07-02-2022	23:02:45 	 d3e07eec-738e-4364-9ef3-d3c1b9c4354a 	 Log event emitted 
-07-02-2022	23:02:49 	 d6a38ab2-af1f-4ab5-8cc4-1af016661df1 	 Log event emitted 
-07-02-2022	23:02:58 	 c2c2eab8-7793-4f0a-9d0f-6ec8cd761679 	 Log event emitted 
-07-03-2022	23:03:02 	 c6f1b08c-9b41-4b4e-8c66-f9d3459901f3 	 Log event emitted 
+08-11-2022	00:11:07 	 04c8b640-25ec-4a22-b037-93a3366d0160 	 Log event emitted 

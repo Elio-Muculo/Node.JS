@@ -17,7 +17,7 @@ const { v4: uuid } = require('uuid');
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const promises_1 = __importDefault(require("fs/promises"));
-const logEvents = (message) => __awaiter(void 0, void 0, void 0, function* () {
+const logEvents = (message, logName) => __awaiter(void 0, void 0, void 0, function* () {
     const datetime = `${(0, date_fns_1.format)(new Date(), 'dd-mm-yyyy\tHH:mm:ss')}`;
     const logItem = `${datetime} \t ${uuid()} \t ${message} \n`;
     console.log(logItem);
@@ -27,7 +27,7 @@ const logEvents = (message) => __awaiter(void 0, void 0, void 0, function* () {
             // TODO why is only creating folder on dist and not on my src Typescript project?
             promises_1.default.mkdir(path_1.default.join(__dirname, '/log'));
         }
-        yield promises_1.default.appendFile(path_1.default.join(__dirname, '/log', 'eventLog.txt'), logItem);
+        yield promises_1.default.appendFile(path_1.default.join(__dirname, '/log', logName), logItem);
     }
     catch (error) {
         console.error(error);

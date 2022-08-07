@@ -8,7 +8,7 @@ import fsPromises from 'fs/promises';
 
 
 
-const logEvents = async (message: string) => {
+const logEvents = async (message: string, logName: string) => {
     const datetime: string = `${format(new Date(), 'dd-mm-yyyy\tHH:mm:ss')}`;
     const logItem: string = `${datetime} \t ${uuid()} \t ${message} \n`;
 
@@ -22,7 +22,7 @@ const logEvents = async (message: string) => {
             fsPromises.mkdir(path.join(__dirname, '/log'));
         }
 
-        await fsPromises.appendFile(path.join(__dirname, '/log', 'eventLog.txt'), logItem);
+        await fsPromises.appendFile(path.join(__dirname, '/log', logName), logItem);
     } catch (error) {
         console.error(error);
         
