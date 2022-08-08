@@ -20,11 +20,8 @@ const promises_1 = __importDefault(require("fs/promises"));
 const logEvents = (message, logName) => __awaiter(void 0, void 0, void 0, function* () {
     const datetime = `${(0, date_fns_1.format)(new Date(), 'dd-mm-yyyy\tHH:mm:ss')}`;
     const logItem = `${datetime} \t ${uuid()} \t ${message} \n`;
-    console.log(logItem);
-    console.log(__filename);
     try {
         if (!fs_1.default.existsSync(path_1.default.join(__dirname, '/log'))) {
-            // TODO why is only creating folder on dist and not on my src Typescript project?
             promises_1.default.mkdir(path_1.default.join(__dirname, '/log'));
         }
         yield promises_1.default.appendFile(path_1.default.join(__dirname, '/log', logName), logItem);
