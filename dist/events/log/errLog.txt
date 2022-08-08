@@ -1,4 +1,0 @@
-08-31-2022	00:31:41 	 000781b4-efa6-4baf-b2bb-3f468c18c4d1 	 TypeError	promises_1.default.readFil is not a function
- 
-08-32-2022	00:32:53 	 b90e7094-227a-406e-8087-a95f705f6df5 	 TypeError	response.writeHea is not a function
- 
