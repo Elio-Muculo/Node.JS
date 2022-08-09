@@ -22,7 +22,7 @@ const logEvents = (message, logName) => __awaiter(void 0, void 0, void 0, functi
     const logItem = `${datetime} \t ${uuid()} \t ${message} \n`;
     try {
         if (!fs_1.default.existsSync(path_1.default.join(__dirname, '/log'))) {
-            promises_1.default.mkdir(path_1.default.join(__dirname, '/log'));
+            yield promises_1.default.mkdir(path_1.default.join(__dirname, '/log'));
         }
         yield promises_1.default.appendFile(path_1.default.join(__dirname, '/log', logName), logItem);
     }

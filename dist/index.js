@@ -1,2 +1,2 @@
 "use strict";
-require('./server/server');
+require('./server/main');

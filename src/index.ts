@@ -1,4 +1,4 @@
-require('./server/server')
+require('./server/main')
 
 
 
