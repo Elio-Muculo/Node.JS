@@ -6,8 +6,6 @@ import fs from 'fs';
 import fsPromises from 'fs/promises';
 
 
-
-
 const logEvents = async (message: string, logName: string) => {
     const datetime: string = `${format(new Date(), 'dd-mm-yyyy\tHH:mm:ss')}`;
     const logItem: string = `${datetime} \t ${uuid()} \t ${message} \n`;
@@ -23,6 +21,5 @@ const logEvents = async (message: string, logName: string) => {
         
     }
 }
-
 
 module.exports.log = logEvents;

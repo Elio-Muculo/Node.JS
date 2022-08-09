@@ -6,7 +6,6 @@
 // ler conteudo
 
 import fs from "fs";
-import fsPromises from "fs/promises";
 import path from "path";
 
 // ? create folder
@@ -62,4 +61,3 @@ const move = async (from: string, to: string) => {
   );
 })();
 
-const everythingMess = async () => {};
