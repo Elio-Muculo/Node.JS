@@ -2,14 +2,14 @@ const data = {
   employees: "",
 };
 
-data.employees = require("./../model/user.json");
+data.employees = require("./../../model/user.json");
 
-module.exports.getAllEmployees = (req, res) => {
+const getAllEmployees = (req, res) => {
   res.json(data.employees);
 };
 
 
-module.exports.createNewEmployees = (req, res) => {
+const createNewEmployees = (req, res) => {
   res.json({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -17,7 +17,7 @@ module.exports.createNewEmployees = (req, res) => {
 }; 
 
 
-module.exports.updateEmployees = (req, res) => {
+const updateEmployees = (req, res) => {
     res.json({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
@@ -25,17 +25,23 @@ module.exports.updateEmployees = (req, res) => {
 }
 
 
-module.exports.deleteEmployees = (req, res) => {
-  res.json({
-    id: req.body.id,
-  });
-};
+const deleteEmployees = (req, res) => {
+        res.json({
+            "id": req.body.id
+        });
+}
 
 
-module.exports.getEmployee = (req, res) => {
+const getEmployee = (req, res) => {
   res.json({
     id: req.params.id,
   });
-};
+}
 
-
+module.exports = {
+  getAllEmployees,
+  createNewEmployees,
+  updateEmployees,
+  deleteEmployees,
+  getEmployee
+}
