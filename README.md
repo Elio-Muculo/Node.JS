@@ -1,4 +1,4 @@
-<h1 align="center">
+<!-- <h1 align="center">
   <img alt="DevQuiz" title="DevQuiz" src="https://github.com/rocketseat-education/nlw-05-flutter/raw/main/.github/logo.png" />
 </h1>
 
@@ -42,4 +42,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ---
 
-Feito com ♥ by Elio Muculo 👋🏻 
+Feito com ♥ by Elio Muculo 👋🏻  -->
