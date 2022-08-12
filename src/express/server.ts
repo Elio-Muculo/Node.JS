@@ -3,6 +3,7 @@ import express = require("express");
 const cors = require("cors");
 const { logger, logEvents } = require("./middleware/events");
 const errHandle = require("./middleware/error_handle");
+const employee = require("./routes/api/employee");
 var app = express();
 
 const PORT = process.env.PORT || 3500;
@@ -39,22 +40,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // ? build -in middleware for static files
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); // default is '/'
+app.use('/subdir', express.static(path.join(__dirname, "public")));
 
-app.get("^/$|index(.html)?", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "index.html"));
-});
+app.use("/", require("./routes/root"));
+app.use("/subdir/", require("./routes/subdir"));
 
-app.get("/new-page(.html)?", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "new-page.html"));
-});
 
-app.get("/old-page(.html)?", (req, res) => {
-  res.redirect(301, "new-page.html"); // 302 default
-});
+// /api/v1/employees;
+// get api/v1/employees/
+// get api/v1/employees/:id
+// post api/v1/employees/
 
-// app.all() -  accepts all methods
-// app.use() - used for middleware | not accept regex
+app.use('/api/v1/employees', employee);
+
 
 app.all("/*", (req, res) => {
   res.status(404);
