@@ -3,8 +3,9 @@ import express = require("express");
 const cors = require("cors");
 const { logger, logEvents } = require("./middleware/events");
 const errHandle = require("./middleware/error_handle");
-const employee = require("./routes/api/employee");
+// const employee = require("./routes/api/employee");
 var app = express();
+
 
 const PORT = process.env.PORT || 3500;
 
@@ -52,7 +53,7 @@ app.use("/subdir/", require("./routes/subdir"));
 // get api/v1/employees/:id
 // post api/v1/employees/
 
-app.use('/api/v1/employees', employee);
+app.use('api/v1/employee', require("./routes/api/employee"));
 
 
 app.all("/*", (req, res) => {
