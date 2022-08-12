@@ -1,43 +1,24 @@
-import path from "path";
 import express = require("express");
-const cors = require("cors");
-const { logger, logEvents } = require("./middleware/events");
-const errHandle = require("./middleware/error_handle");
-const employee = require("./routes/api/employee");
 var app = express();
+import path from "path";
+const cors = require("cors");
 
+const employee = require("./routes/api/employee");
+const errHandle = require("./middleware/error_handle");
+const { corsOptions } = require('./utils/corsOptions');
+const { logger, logEvents } = require("./middleware/events");
 
 const PORT = process.env.PORT || 3500;
 
 // ? custom middleware
-
 app.use(logger);
-
-// ? third party middleware
-const whiteList = [
-  "https://www.google.com",
-  "http://127.0.0.1:5500",
-  "http://localhost:3500",
-];
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by the cors"));
-    }
-  },
-  optionsSuccessStatus: 200,
-};
-
 app.use(cors(corsOptions));
 
 // ? Middleware  built - in to handle urlencoded data
 // ? form data
 app.use(express.urlencoded({ extended: false }));
 
-// build-in middleware for json data
+// ? build-in middleware for json data
 app.use(express.json());
 
 // ? build -in middleware for static files
@@ -52,7 +33,6 @@ app.use("/subdir/", require("./routes/subdir"));
 // get api/v1/employees/
 // get api/v1/employees/:id
 // post api/v1/employees/
-
 app.use('/api/v1/employees', employee);
 
 
