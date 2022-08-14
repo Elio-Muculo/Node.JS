@@ -5,7 +5,6 @@ const data = {
 
 const getAllEmployees = (req, res) => {
   console.log(req);
-  
   res.json(data.employees);
 };
 
@@ -13,7 +12,7 @@ const getAllEmployees = (req, res) => {
 const createNewEmployees = (req, res) => {
   res.json({
     firstname: req.body.firstname,
-    lastname: req.body.lastname,
+        lastname: req.body.lastname,
   });
 }; 
 
