@@ -8,10 +8,10 @@ router.route('/')
     .get(employeesController.getAllEmployees)
     .post(employeesController.createNewEmployees)
     .put(employeesController.updateEmployees)
-    .delete(employeesController.deleteEmployees);
 
 
 router.route('/:id')    
+    .delete(employeesController.deleteEmployees)
     .get(employeesController.getEmployee);
 
 
