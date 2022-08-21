@@ -2,10 +2,11 @@
   "name": "node",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "build": "rimraf dist && tsc",
     "preserve": "npm run build",
+    "serve": "nodemon",
     "dev": "cross-env NODE_ENV=development concurrently \"tsc --watch\" \"nodemon -q dist/index.js\"",
     "prestart": "npm run build",
     "start": "cross-env NODE_ENV=production node dist/index.js",
@@ -17,6 +18,7 @@
   "dependencies": {
     "@types/body-parser": "^1.19.2",
     "@types/express": "^4.17.13",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -24,6 +26,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "helmet": "^5.1.1",
+    "mongoose": "^6.5.2",
     "rimraf": "^3.0.2",
     "uuid": "^8.3.2"
   },
