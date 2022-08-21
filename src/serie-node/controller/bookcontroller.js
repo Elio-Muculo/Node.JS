@@ -18,8 +18,12 @@ router.post("/book", async (req, res) => {
 });
 
 router.get("/user/:id", async (req, res) => {
-  const book = await User.find({ _id: req.params.id }).populate("books");
+  const book = await User.findById(req.params.id).populate('books', 'title');
   res.status(200).json({ sucess: true, data: book });
+
+  console.log(book);
 });
 
 module.exports = (app) => app.use("/api", router);
+
+
