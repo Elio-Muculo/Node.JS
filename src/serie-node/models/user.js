@@ -22,24 +22,18 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  books: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Book",
-    },
-  ],
 });
 
 
-// bookSchema.virtual("books", {
-//   ref: "Book", //The Model to use
-//   localField: "_id", //Find in Model, where localField
-//   foreignField: "user", // is equal to foreignField
-// });
+userSchema.virtual("books", {
+  ref: "Book", //The Model to use
+  localField: "_id", //Find in Model, where localField
+  foreignField: "user", // is equal to foreignField
+});
 
 // // Set Object and Json property to true. Default is set to false
-// bookSchema.set("toObject", { virtuals: true });
-// bookSchema.set("toJSON", { virtuals: true });
+userSchema.set("toObject", { virtuals: true });
+userSchema.set("toJSON", { virtuals: true });
 
 userSchema.pre('save', async function(next) {
     const hash = await bcrypt.hash(this.password, 10);

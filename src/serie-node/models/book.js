@@ -5,9 +5,9 @@ const User = require("./user");
 const bookSchema = mongoose.Schema({
   title: String,
   user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 
 
