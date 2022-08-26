@@ -12,7 +12,7 @@ const handleRefreshToken = (req, res) => {
   const cookies = req.cookies;
   if (!cookies?.jwt) return res.sendStatus(401);
 
-  const refreshTokens = cookies.jwToken;
+  const refreshTokens = cookies.jwt;
 
   const foundUser = userDb.users.find(
     (person) => person.refreshToken === refreshTokens
@@ -25,13 +25,14 @@ const handleRefreshToken = (req, res) => {
     refreshTokens,
     process.env.REFRESH_TOKEN_SECRET,
     (err, decoded) => {
-        if ( err || foundUser.username !== decoded.username) return res.sendStatus(403);
-        const acessTokens = jwToken.sign(
-            { "username": decoded.username },
-            process.env.ACESS_TOKEN_SECRET,
-            { expiresIn: '40s' }
-        );
-        res.json({ acessTokens });
+      if (err || foundUser.username !== decoded.username)
+        return res.sendStatus(403);
+      const acessTokens = jwToken.sign(
+        { username: decoded.username },
+        process.env.ACESS_TOKEN_SECRET,
+        { expiresIn: "40s" }
+      );
+      res.status(201).json({ acessTokens });
     }
   );
 };
