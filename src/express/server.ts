@@ -33,7 +33,8 @@ app.use("/", require("./routes/root"));
 // get api/v1/employees/:id
 // post api/v1/employees/
 app.use('/api/v1/employees', employee);
-app.use('/api/v1/register', require('./routes/api/register'));
+app.use("/api/v1/register", require("./routes/api/register"));
+app.use("/api/v1/login", require("./routes/api/auth"));
 
 
 app.all("/*", (req, res) => {
