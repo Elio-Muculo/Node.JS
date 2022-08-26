@@ -2,6 +2,7 @@ const data = {
   employees: require("../model/user.json"),
 };
 
+
 const getAllEmployees = (req, res) => {
   console.log(req);
   res.json(data.employees);
