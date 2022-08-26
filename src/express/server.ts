@@ -40,6 +40,7 @@ app.use("/", require("./routes/root"));
 app.use("/api/v1/register", require("./routes/api/register"));
 app.use("/api/v1/login", require("./routes/api/auth"));
 app.use("/api/v1/refresh", require("./routes/api/refresh"));
+app.use("/api/v1/logout", require("./routes/api/logout"));
 
 app.use(verifyJwt.verifyJwt);
 app.use('/api/v1/employees', employee);
