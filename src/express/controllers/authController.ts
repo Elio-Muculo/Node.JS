@@ -14,7 +14,7 @@ const handleNewUser = async (req, res) => {
     // check for duplicate users
     const duplicate = userDB.users.find(person => person.username === user);
 
-    if (duplicate) return res.sendStatus(409); // conflict
+    if (duplicate) return res.status(409).json({ 'message': 'users already exist' }); // conflict
 
     try {
         // encrypt
@@ -24,9 +24,9 @@ const handleNewUser = async (req, res) => {
         const newUser = { "username": user, "password": hashPwd };
         userDB.setUsers([...userDB.users, newUser]);
 
-        await fsPromises(
+        await fsPromises.writeFile(
             path.join(__dirname, '..', 'model', 'user.json'),
-            JSON.stringify(userDB.setUsers)
+            JSON.stringify(userDB.users)
         );
         console.log(userDB.users);
         res.status(201).json({ 'sucess':  `new user ${user} created` });
