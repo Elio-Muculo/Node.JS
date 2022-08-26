@@ -26,7 +26,6 @@ app.use(express.static(path.join(__dirname, "public"))); // default is '/'
 app.use('/subdir', express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/root"));
-app.use("/subdir/", require("./routes/subdir"));
 
 
 // /api/v1/employees;
