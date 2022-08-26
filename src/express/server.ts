@@ -2,7 +2,9 @@ import express = require("express");
 var app = express();
 import path from "path";
 const cors = require("cors");
+const cookieParser = require('cookie-parser');
 
+const verifyJwt = require("./middleware/verifyjwt");
 const employee = require("./routes/api/employee");
 const errHandle = require("./middleware/error_handle");
 const { corsOptions } = require('./utils/corsOptions');
@@ -21,6 +23,9 @@ app.use(express.urlencoded({ extended: false }));
 // ? build-in middleware for json data
 app.use(express.json());
 
+// middleware for cookie
+app.use(cookieParser());
+
 // ? build -in middleware for static files
 app.use(express.static(path.join(__dirname, "public"))); // default is '/'
 app.use('/subdir', express.static(path.join(__dirname, "public")));
@@ -32,10 +37,12 @@ app.use("/", require("./routes/root"));
 // get api/v1/employees/
 // get api/v1/employees/:id
 // post api/v1/employees/
-app.use('/api/v1/employees', employee);
 app.use("/api/v1/register", require("./routes/api/register"));
 app.use("/api/v1/login", require("./routes/api/auth"));
+app.use("/api/v1/refresh", require("./routes/api/refresh"));
 
+app.use(verifyJwt.verifyJwt);
+app.use('/api/v1/employees', employee);
 
 app.all("/*", (req, res) => {
   res.status(404);
