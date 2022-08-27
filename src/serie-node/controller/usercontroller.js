@@ -3,7 +3,7 @@ const User = require('../models/user');
 const router = express.Router();
 
 
-router.post('/register', async (req, res) => {
+const register = async (req, res) => {
     const { email } = req.body;
     try {
       if (await User.findOne({ email }))
@@ -16,7 +16,8 @@ router.post('/register', async (req, res) => {
     } catch (error) {
         res.status(400).send({ error: 'registration failed' });
     }
-});
+};
 
 
-module.exports = app => app.use('/auth', router);
+module.exports = register;
+// module.exports = (app) => app.use("/auth", router);
