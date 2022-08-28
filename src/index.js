@@ -4,10 +4,13 @@ const bodyParser = require('body-parser');
 const app = express();
 const userRoute = require("./serie-node/routes/user");
 const projectsRoute = require("./serie-node/routes/projects");
+
+
 // const adminRoute = require("./serie-node/routes/admin");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 
 // ? use this middleware only for all userRoute path
 // userRoute.use(require('./serie-node/middleware/verifyUsers'));
