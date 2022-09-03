@@ -19,11 +19,10 @@ exports.findOne = (req, res) => {
   const { id } = req.params;
 
   try {
-    const data = database.findOne("SELECT * FROM user WHERE id = ?", id);
-    console.log(data);
+    const [ data ] = database.findOne("SELECT * FROM user WHERE id = ?", id);
+    console.log(data.id);
     res.json({ data });
   } catch (error) {
     res.status(500).send({ err: "error on database query" });
   }
 };
-
